@@ -117,8 +117,4 @@ formElement.addEventListener('submit', function (evt) {
     saveTasks(items); // Сохраняем в localStorage
     inputElement.value = ''; // Очищаем поле ввода
   }
-  else{ 
-    alert('Введите текст дела'); 
-    inputElement.focus();
-  }
 });
