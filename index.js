@@ -109,10 +109,16 @@ items.forEach((item) => {
 // Обработчик отправки формы для добавления новой задачи
 formElement.addEventListener('submit', function (evt) {
   evt.preventDefault(); // Предотвращаем стандартную отправку формы
-  const outputText = inputElement.value; // Получаем текст из поля ввода
-  const itemElements = createItem(outputText); // Создаем элемент задачи
-  listElement.prepend(itemElements); // Добавляем в начало списка
-  items = getTasksFromDOM(); // Обновляем массив задач
-  saveTasks(items); // Сохраняем в localStorage
-  inputElement.value = ''; // Очищаем поле ввода
+  const outputText = inputElement.value.trim(); // Получаем текст из поля ввода
+  if(outputText){ 
+    const itemElements = createItem(outputText); // Создаем элемент задачи
+    listElement.prepend(itemElements); // Добавляем в начало списка
+    items = getTasksFromDOM(); // Обновляем массив задач
+    saveTasks(items); // Сохраняем в localStorage
+    inputElement.value = ''; // Очищаем поле ввода
+  }
+  else{ 
+    alert('Введите текст дела'); 
+    inputElement.focus();
+  }
 });
